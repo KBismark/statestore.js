@@ -2,7 +2,7 @@
 A state management library for reactively and selectively updating parts of applications.
 
 
-## A simple demo in any JavaScript or TypeScript applicatins
+## A simple demo in any JavaScript or TypeScript applications
 This is a test with the usage of statestore.js to pass data from one function to the other. 
 After running the 
 
