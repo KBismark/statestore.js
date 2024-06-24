@@ -45,7 +45,7 @@ export function deleteStore(provider: string, storeId: string){
  * @param storeId Store identifier. A unique string that is used to access a store from a storage provider.
  * @param store The data to be stored
  */
-export function setStore(provider: string, storeId: string, store: any){
+export function createStore<S=any>(provider: string, storeId: string, store: S extends Objects? S : never){
     let branch = getPorvider(provider);
     if(!branch){
         Store.set(provider, branch = {})
@@ -55,6 +55,9 @@ export function setStore(provider: string, storeId: string, store: any){
     }
 }
 
+export const setStore = createStore;
+
+type Objects = {[k:string]: any}
 type OptionalKeys<T> = {
     [K in keyof T]?: T[K];
 };
