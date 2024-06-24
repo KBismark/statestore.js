@@ -3,8 +3,7 @@ A state management library for reactively and selectively updating parts of appl
 
 
 ## A simple demo in any JavaScript or TypeScript applications
-This is a test with the usage of statestore.js to pass data from one function to the other. 
-After running the 
+This is a test with the usage of statestore.js to pass data from one function to the other.    
 
 ```ts
 
@@ -27,12 +26,19 @@ function App(){
 
 // Logs user info when user info is updated in the App method
 function ShowUserInfo(propsAccess:  ContextId){
+
     const actualProps = getContext<UserInfo>(propsAccess);
-    SomeCPUIntensiveTask() // Performs some task
     console.log(actualProps);
+
+    // Performs some task
+    SomeCPUIntensiveTask() 
+    
     
     // Subscribe to changes in username only
-    subscribeToContext<UserInfo>(propsAccess,{ watch: ['username'], action: (newProps)=>console.log(newProps)})
+    subscribeToContext<UserInfo>(
+        propsAccess,
+        { watch: ['username'], action: (newProps)=>console.log(newProps)}
+    )
 }
 
 function SomeCPUIntensiveTask(){
