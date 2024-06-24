@@ -67,13 +67,16 @@ export function getStore<S , R=S, C = (((store: S) => R)|undefined)>(provider: s
  * Updates and trigger listners of a store data.
  * @param provider Storage provider's name
  * @param storeId  Store identifier.
- * @param data Update configuration object
- * @param data.actors An array of properties or fields in the store whose listeners should respond to the changes.    
- * @param data.store An object with the properties or fields in the store to update. 
+ * @param data Update configuration object.    
+ * 
  */
 export function updateStore<S>(provider: string, storeId: string, data: {
-    /** If undefined, updates and triggers all subscribed handlers. */
+    /**
+     * An array of properties or fields in the store whose listeners should respond to the changes. 
+     * If undefined, updates and triggers all subscribed handlers. Set to an empty array `[]` to update without triggering subscribed handlers.    
+     */
     actors?: Array<keyof S>;
+    /** An object with the properties or fields in the store to update. */
     store: OptionalKeys<S extends {
         [k: string | number | symbol]: any;
     } ? S : never>;
@@ -92,7 +95,7 @@ export function updateStore<S>(provider: string, storeId: string, data: {
 export function update<S>(provider: string, storeId: string, data: {
     /**
      * An array of properties or fields in the store whose listeners should respond to the changes. 
-     * If undefined, updates and triggers all subscribed handlers. Set to empty array `[]` to update without triggering subscribed handlers.    
+     * If undefined, updates and triggers all subscribed handlers. Set to an empty array `[]` to update without triggering subscribed handlers.    
      */
     actors?: Array<keyof S>;
     /** An object with the properties or fields in the store to update. */
@@ -143,7 +146,7 @@ export function update<S>(provider: string, storeId: string, data: {
 
 /**
  * Subscribe to changes in a store's data or specific fields in the store.     
- * *Make sure to `unsubscribe` when nomore needed.
+ * **Make sure to `unsubscribe` when nomore needed**
  * @param provider Storage provider's name
  * @param storeId  Store identifier.
  * @param data Update configuration object  
@@ -152,7 +155,7 @@ export function update<S>(provider: string, storeId: string, data: {
 export function subscribe<S>(provider: string, storeId: string, data: {
     /**
      * An array of properties or fields in the store to attach a listener. 
-     * If undefined, this listner shall be triggerered everytime there's a the store's data is updated.  
+     * If undefined, this listner shall be triggerered everytime the store's data is updated.  
      */
     watch?: Array<keyof S>;
     /** A listenr to be triggered when store's data is updated */
