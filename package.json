@@ -2,14 +2,14 @@
   "name": "statestorejs",
   "version": "1.0.0",
   "description": "A state management library for reactively and selectively updating parts of applications.",
-  "main": "dist/index.js",
+  "main": "dist/lib/index.js",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "types": "./dist/lib/index.d.ts",
+      "default": "./dist/lib/index.js"
     }
   },
   "scripts": {
