@@ -11,13 +11,34 @@ export const getPorvider = (provider: string)=>Store.get(provider);
 /**
  * Creates a storage provider. A storage provider is a database for storing stateful data.
  * @param provider A name for the storage provider
- * @returns 
+ * 
  */
 export const createProvider = (provider: string)=> !getPorvider(provider)&&Store.set(provider, {});
 
 // No performer
 const noop = ()=>{};
 
+/**
+ * Clears a storage provider
+ * @param provider A name for the storage provider
+ * 
+ */
+export function deleteProvider(provider: string){
+    Store.delete(provider)
+}
+
+/**
+ * Removes a store from a storage provider
+ * @param provider A name for the storage provider
+ * @param storeId Store identifier.
+ * 
+ */
+export function deleteStore(provider: string, storeId: string){
+    let branch = getPorvider(provider);
+    if(branch){
+        branch[storeId] = undefined;
+    }
+}
 /**
  * Sets a store in a storage provider
  * @param provider Storage provider's name

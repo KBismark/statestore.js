@@ -1,4 +1,4 @@
-import { createProvider, getStore, setStore, subscribe, unsubscribe, update } from "./global_store";
+import { createProvider, deleteStore, getStore, setStore, subscribe, unsubscribe, update } from "./global_store";
 
 // Context providers are not accessible to outsiders
 const provider = `private-${Math.random()}`;
@@ -46,8 +46,16 @@ export function createContext<C=any>(context: C extends Objects?C:never): Contex
     return [id,{value: context}]
 }
 
-export function destroyContext(id: ContextId){
-
+/**
+ * Clears a context.     
+ * **Always clear contexts when not needed anymore.**
+ * @param contextId Context identifier.
+ * 
+ */
+export function destroyContext <S=any>(contextId: ContextId, context: ContextValue<S>){
+    (context as any).value = {};
+    !unusedIds.includes(contextId as string)&&unusedIds.push(contextId as string);
+    deleteStore(provider, contextId as string);
 }
 
 /**
