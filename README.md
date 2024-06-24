@@ -37,7 +37,7 @@ function ShowUserInfo(propsAccess:  ContextId){
     // Subscribe to changes in username only
     subscribeToContext<UserInfo>(
         propsAccess,
-        { watch: ['username'], action: (newProps)=>console.log(newProps)}
+        { watch: ['username'], action: (newProps)=>console.log(newProps) }
     )
 }
 
