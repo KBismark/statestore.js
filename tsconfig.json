@@ -1,5 +1,5 @@
 {
-    "exclude": ["node_modules", "dist", "jest.config.js","__tests__"],
+    "exclude": ["node_modules", "dist", "demo", "jest.config.js","__tests__"],
   
     "compilerOptions": {
         "outDir": "dist",
