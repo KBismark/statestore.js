@@ -1,0 +1,30 @@
+{
+    "exclude": ["node_modules", "dist", "jest.config.js"],
+  
+    "compilerOptions": {
+        "outDir": "dist",
+        "allowJs": true,
+        "esModuleInterop": true,
+        "declaration": true,
+        "jsx": "react-native",
+        "lib": ["DOM", "ESNext"],
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "target": "ESNext",
+        "module": "commonjs",
+        "strict": true,
+        "paths": {
+            "@/*": [
+            "./*"
+            ]
+        }
+    },
+    "include": [
+      "**/*.ts",
+      "**/*.tsx",
+      "package.json",
+      "package-lock.json"
+    ]
+  }
+  

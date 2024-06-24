@@ -1,0 +1,36 @@
+{
+  "name": "statestorejs",
+  "version": "1.0.0",
+  "description": "A state management library for reactively and selectively updating parts of applications.",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "preversion": "npm run build",
+    "version": "npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KBismark/statestore.js.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KBismark/statestore.js/issues"
+  },
+  "homepage": "https://github.com/KBismark/statestore.js#readme",
+  "devDependencies": {
+    "rimraf": "^5.0.7",
+    "typescript": "^5.5.2"
+  }
+}
