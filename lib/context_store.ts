@@ -8,11 +8,8 @@ let ids = -99999999;
 const unusedIds: string[] = [];
 
 function getConetextId(){
-    let id = `${unusedIds.pop()}`;
-    if(!id){
-        id = `${ids++}`
-    }
-    return id;
+    let id = unusedIds.pop();
+    return id? id : `${ids++}`;
 }
 
 type Objects = {[k:string]: any}

@@ -191,7 +191,7 @@ export function subscribe<S>(provider: string, storeId: string, data: {
         return '';
     }
 
-    let subscriptionId: string = `${store.available.pop()}`;
+    let subscriptionId: string = store.available.pop();
     if(!subscriptionId){
         subscriptionId = `${store.listeners.length.actual++}`;
     }
