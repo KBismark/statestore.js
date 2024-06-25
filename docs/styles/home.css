@@ -1,43 +1,43 @@
-
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
 }
 
-body{
-    margin: 0;
+body {
+  margin: 0;
 }
 
-.svg-background{
-    background-color: #050D07;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 1500'%3E%3Cdefs%3E%3Cpath fill='none' stroke-width='1' stroke-opacity='0.74' id='a' d='M0.74-509.63l485.39 352.65l-185.4 570.61h-599.97l-185.4-570.61L0.74-509.63 M0.74-510.87l-486.56 353.51l185.85 571.99h601.42L487.3-157.36L0.74-510.87L0.74-510.87z'/%3E%3C/defs%3E%3Cg transform='scale(0.289)' style='transform-origin:center'%3E%3Cg style='transform-origin:center'%3E%3Cg transform='rotate(-88 0 0)' style='transform-origin:center'%3E%3Cg transform='translate(1000 750)'%3E%3Cuse stroke='%2337D1A4' href='%23a' transform='rotate(5.5 0 0) scale(1.055)'/%3E%3Cuse stroke='%2333c699' href='%23a' transform='rotate(11 0 0) scale(1.11)'/%3E%3Cuse stroke='%2330bb8e' href='%23a' transform='rotate(16.5 0 0) scale(1.165)'/%3E%3Cuse stroke='%232cb083' href='%23a' transform='rotate(22 0 0) scale(1.22)'/%3E%3Cuse stroke='%2328a478' href='%23a' transform='rotate(27.5 0 0) scale(1.275)'/%3E%3Cuse stroke='%2325996d' href='%23a' transform='rotate(33 0 0) scale(1.33)'/%3E%3Cuse stroke='%23218e62' href='%23a' transform='rotate(38.5 0 0) scale(1.385)'/%3E%3Cuse stroke='%231d8357' href='%23a' transform='rotate(44 0 0) scale(1.44)'/%3E%3Cuse stroke='%231a784d' href='%23a' transform='rotate(49.5 0 0) scale(1.495)'/%3E%3Cuse stroke='%23166d42' href='%23a' transform='rotate(55 0 0) scale(1.55)'/%3E%3Cuse stroke='%23126237' href='%23a' transform='rotate(60.5 0 0) scale(1.605)'/%3E%3Cuse stroke='%230f572c' href='%23a' transform='rotate(66 0 0) scale(1.66)'/%3E%3Cuse stroke='%230b4b21' href='%23a' transform='rotate(71.5 0 0) scale(1.715)'/%3E%3Cuse stroke='%23074016' href='%23a' transform='rotate(77 0 0) scale(1.77)'/%3E%3Cuse stroke='%2304350b' href='%23a' transform='rotate(82.5 0 0) scale(1.825)'/%3E%3Cuse stroke='%23002A00' href='%23a' transform='rotate(88 0 0) scale(1.88)'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    background-attachment: fixed;
-    background-size: cover;
+.svg-background {
+  background-color: #050d07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 1500'%3E%3Cdefs%3E%3Cpath fill='none' stroke-width='1' stroke-opacity='0.74' id='a' d='M0.74-509.63l485.39 352.65l-185.4 570.61h-599.97l-185.4-570.61L0.74-509.63 M0.74-510.87l-486.56 353.51l185.85 571.99h601.42L487.3-157.36L0.74-510.87L0.74-510.87z'/%3E%3C/defs%3E%3Cg transform='scale(0.289)' style='transform-origin:center'%3E%3Cg style='transform-origin:center'%3E%3Cg transform='rotate(-88 0 0)' style='transform-origin:center'%3E%3Cg transform='translate(1000 750)'%3E%3Cuse stroke='%2337D1A4' href='%23a' transform='rotate(5.5 0 0) scale(1.055)'/%3E%3Cuse stroke='%2333c699' href='%23a' transform='rotate(11 0 0) scale(1.11)'/%3E%3Cuse stroke='%2330bb8e' href='%23a' transform='rotate(16.5 0 0) scale(1.165)'/%3E%3Cuse stroke='%232cb083' href='%23a' transform='rotate(22 0 0) scale(1.22)'/%3E%3Cuse stroke='%2328a478' href='%23a' transform='rotate(27.5 0 0) scale(1.275)'/%3E%3Cuse stroke='%2325996d' href='%23a' transform='rotate(33 0 0) scale(1.33)'/%3E%3Cuse stroke='%23218e62' href='%23a' transform='rotate(38.5 0 0) scale(1.385)'/%3E%3Cuse stroke='%231d8357' href='%23a' transform='rotate(44 0 0) scale(1.44)'/%3E%3Cuse stroke='%231a784d' href='%23a' transform='rotate(49.5 0 0) scale(1.495)'/%3E%3Cuse stroke='%23166d42' href='%23a' transform='rotate(55 0 0) scale(1.55)'/%3E%3Cuse stroke='%23126237' href='%23a' transform='rotate(60.5 0 0) scale(1.605)'/%3E%3Cuse stroke='%230f572c' href='%23a' transform='rotate(66 0 0) scale(1.66)'/%3E%3Cuse stroke='%230b4b21' href='%23a' transform='rotate(71.5 0 0) scale(1.715)'/%3E%3Cuse stroke='%23074016' href='%23a' transform='rotate(77 0 0) scale(1.77)'/%3E%3Cuse stroke='%2304350b' href='%23a' transform='rotate(82.5 0 0) scale(1.825)'/%3E%3Cuse stroke='%23002A00' href='%23a' transform='rotate(88 0 0) scale(1.88)'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
 }
 
-.hero-big-icon{
-    animation: pop-in-out 6s ease-in-out  infinite;
+.hero-big-icon {
+  animation: pop-in-out 6s ease-in-out infinite;
 }
-
 
 @keyframes pop-in-out {
-    0%{
-        transform: scale(1) rotate(0deg);
-        opacity: 0.8;
-    }
-    /* 25%{
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  /* 25%{
         transform: scale(1) rotate(-2deg);
         opacity: 0.6;
     } */
-    50%{
-        transform: scale(0.95) rotate(-2deg);
-        opacity: 0.4;
-    }
-    /* 75%{
+  50% {
+    transform: scale(0.95) rotate(-2deg);
+    opacity: 0.4;
+  }
+  /* 75%{
         transform: scale(0.9) rotate(-2deg);
         opacity: 0.7;
     } */
-    100%{
-        transform: scale(1) rotate(0deg);
-        opacity: 0.8;
-    }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
 }
