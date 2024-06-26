@@ -7,13 +7,13 @@
         "esModuleInterop": true,
         "declaration": true,
         "jsx": "react-native",
-        "lib": ["DOM", "ESNext"],
+        "lib": ["es6","dom"],
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "skipLibCheck": true,
-        "target": "ESNext",
         "module": "commonjs",
-        "strict": true,
+        "target": "es5",
+        "strict": false,
         "paths": {
             "@/*": [
             "./*"
