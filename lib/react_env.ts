@@ -30,10 +30,8 @@ export function useStateStore<S>(provider: string, storeId: string, watch?: Arra
 }
 
 
-const propsAreEqual = (a:any,b:any)=>true;
-
 export function createComponent(Component:({propsSource}:{propsSource: string|ContextId})=>any): ({propsSource}:{propsSource: string|ContextId})=>any {
-    return R.memo(Component,propsAreEqual)
+    return R.memo(Component)
 }
 
 
