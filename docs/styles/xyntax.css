@@ -1,0 +1,282 @@
+
+
+.mdkeywordi{
+    color: #1168cc;
+}
+.mdkeywordii{
+    color: #ac4bc4;
+}
+.mdkeywordiii{
+    color: #85d6eb;
+}
+.mdkeywordiv{
+    color: rgb(250, 232, 131)
+}
+.mdstrings{
+    color: rgb(179, 66, 37);
+}
+.mdnumbers{
+    color: rgb(143, 226, 185);
+}
+.mdkeywordiv .mdnumbers{
+    color: rgb(238, 225, 151);
+}
+.mdcomments{
+    color: rgb(85, 179, 85);font-style: italic;
+}
+.mdspchars{
+    color: rgb(218, 209, 209);
+}
+.markdown{
+    font-family: Consolas, 'Source Code Pro', Menlo, Monaco, 'Andale Mono', 'Ubuntu Mono',monospace,Arial, Helvetica, sans-serif;
+    /*color: rgb(218, 209, 209);monospace, sans-serif;*/
+    font-size: 13.5px;
+    padding: 0px 10px 0px 8px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    line-height: 1.4;
+    position: relative;
+    margin: 0px 0% 0px 0%;
+    overflo: auto;
+    max-heigh: 500px;
+    font-weight: 500;
+    -o-tab-size: 2;
+    tab-size: 2;
+    -moz-hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    
+    /*color: #85d6eb; SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono #1b1f230d
+    border-left: 3px solid rgb(212, 211, 211);*/
+}
+.markdown-expanded{
+    font-family: Consolas, 'Source Code Pro', Menlo, Monaco, 'Andale Mono', 'Ubuntu Mono',monospace,Arial, Helvetica, sans-serif;
+    /*color: rgb(218, 209, 209);monospace, sans-serif;*/
+    font-size: 16px;
+    padding: 0px 10px 20px 15px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    line-height: 2;
+    position: relative;
+    margin: 0px 0% 30px 0%;
+    overflow: auto;
+    height: 100%;
+    font-weight: 500;
+    -o-tab-size: 2;
+    tab-size: 2;
+    -moz-hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    
+    /*color: #85d6eb; SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono #1b1f230d
+    border-left: 3px solid rgb(212, 211, 211);*/
+}
+.mdcode-inline{
+    line-height: 2em;
+    overflow-x: scroll;
+}
+.markdown-inline{
+    font-family: ui-monospace,monospace,serif;
+    font-size: 14px;
+    padding: .6em .5em .6em .5em;
+    background-color: rgba(27, 31, 35, 0.051);
+    margin: 0px 5px 0px 2px;
+    border-radius: 4px;
+    overflow-x: scroll;
+}
+.mdcopy{
+    text-align: right;padding-right: 3px;
+    margin: 0px 0% -10px 0%;
+    background-color: #03111b;padding: 10px 7px 17px 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.mdcopybut{
+    background-color: #dbdddd;
+    paddin: 3px 7px 5px 7px;colo: #fff;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.mdcopybut:hover {
+    background-color: #afb3b3e1;
+}
+.mdcopytip{
+    visibilit: hidden;
+    width: 100px;
+    background-color: rgba(85, 85, 85, 0.993);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 4px 3px 4px 3px;
+    position: absolute;
+    z-index: 1;
+    lef: 50%;
+    margin-left: -195px;
+    opacity: 0;
+    -o-transition: opacity 0.3s;
+    -moz-transition: opacity 0.3s;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+}
+.mdtip{
+    position: relative;
+    display: inline-block;
+}
+.mdcopybu:hover .mdcopytip{
+    visibility: visible;
+    opacity: 1;
+}
+.mdcodetype{
+    background-color: #dbdddd;
+    border: 1px solid #dbdddd;
+    padding: 3px 7px 2px 7px;
+    margin-to: -30px;margin-right: 20px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+.mdtexts{
+    color: #000000;
+}
+
+
+
+
+pre.xyntax{
+    font-family: Consolas, 'Source Code Pro', Menlo, Monaco, 'Andale Mono', 'Ubuntu Mono',monospace,Arial, Helvetica, sans-serif;
+    background-color: var(--xyntax-block-background);
+    font-size: 15px;
+    line-height: 1.6;
+    position: relative;
+    font-weight: 500;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -moz-hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+:root{
+    --xyntax-keyword1:#1168cc;
+    --xyntax-keyword2:#ac4bc4;
+    --xyntax-variable:#97dced;
+    --xyntax-string:#edab7a;
+    --xyntax-method:#fae883;
+    --xyntax-text:#ffffff;
+    --xyntax-comment:#59af59;
+    --xyntax-predef:#7dc791;
+    --xyntax-special-character:#89878f;
+    --xyntax-block-background:#03111b;
+    --xyntax-jsx-block-background:transparent;
+}
+
+/* Violent Day Good-On-White*/
+/* :root{
+    --xyntax-keyword1:#0c32c5;
+    --xyntax-keyword2:#089fc3;
+    --xyntax-variable:#4a0bad;
+    --xyntax-string:#217479;
+    --xyntax-method:#df0707;
+    --xyntax-text:#000000;
+    --xyntax-comment:#98979b;
+    --xyntax-predef:#3aeb72;
+    --xyntax-special-character:#636363;
+    --xyntax-block-background:#fdfdfd;
+    --xyntax-jsx-block-background:transparent;
+} */
+/* Brightful Violent Night */
+/* :root{
+    --xyntax-keyword1:#a2b4f9;
+    --xyntax-keyword2:#83f3fa;
+    --xyntax-variable:#a476eb;
+    --xyntax-string:#9effbd;
+    --xyntax-method:#3aeb72;
+    --xyntax-text:#ffffff;
+    --xyntax-comment:#636363;
+    --xyntax-predef:#3aeb72;
+    --xyntax-special-character:#98979b;
+    --xyntax-block-background:#0b050c;
+    --xyntax-jsx-block-background:transparent;
+} */
+
+
+
+/*-------- Dark Mode ------ */
+
+/* Violent Mid-Night Good-On-Dark*/
+/* :root{
+    --xyntax-keyword1:#a7b4ff;
+    --xyntax-keyword2:#007777;
+    --xyntax-variable:#fda3c6;
+    --xyntax-string:#3b686d;
+    --xyntax-method:#f9451d;
+    --xyntax-text:#000000;
+    --xyntax-comment:#98979b;
+    --xyntax-predef:#3ee38c;
+    --xyntax-special-character:#636363;
+    --xyntax-block-background:#1d1d1d;
+    --xyntax-jsx-block-background:transparent;
+} */
+
+.xmk-js1x{
+    color:var(--xyntax-special-character)
+}
+.xmk-key1x{
+    color: var(--xyntax-keyword1);
+}
+.xmk-key2x{
+    color: var(--xyntax-keyword2);
+}
+.xmk-varx{
+    color: var(--xyntax-variable)
+}
+.xmk-stringx{
+    color: var(--xyntax-string)
+}
+.xmk-methx{
+    color: var(--xyntax-method)
+}
+.xmk-text{
+    color: var(--xyntax-text)
+}
+.xmk-commentx,.xmk-commentx .xmk-stringx{
+    color: var(--xyntax-comment);font-style: italic;
+}
+.xmk-predefx{
+    color: var(--xyntax-predef);
+}
+.xmk-jsx{
+    background-color: var(--xyntax-jsx-block-background)
+}
+
+.mdkeywordi{
+    color: #1168cc;
+}
+.mdkeywordii{
+    color: #ac4bc4;
+}
+.mdkeywordiii{
+    color: #85d6eb;
+}
+.mdkeywordiv{
+    color: #fae883
+}
+.mdstrings{
+    color: #c24c2f;
+}
+.mdnumbers{
+    color: #8fe2b9;
+}
+.mdkeywordiv .mdnumbers{
+    color: rgb(238, 225, 151);
+}
+.mdcomments{
+    color: #59af59;font-style: italic;
+}
+.mdspchars{
+    color: #dad1d1;
+}

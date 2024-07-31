@@ -1,8 +1,9 @@
 const fs = require('fs');
-const path = require('path')
+const path = require('path');
+const xyntax = require('xyntax');
 const Prism = require('prismjs');
 const loadLanguages = require('prismjs/components/');
-loadLanguages(['markdown', 'javascript']);
+loadLanguages(['markdown', 'javascript','jsx']);
 
 
 const rootDir =__dirname;
@@ -21,10 +22,10 @@ pages.forEach((page)=>{
             const matches = pageContent.match(regex);
             if(matches){
                 let codeFileContent = fs.readFileSync(path.join(pageCodesDir, `/${file}`), 'utf8');
-                const html = Prism.highlight(codeFileContent, Prism.languages.javascript, 'javascript');
-                // codeFileContent = codeFileContent.replace(/\&/gs,'&amp;').replace(/</gs,'&lt;').replace(/>/gs,'&gt;');
+                const html = xyntax.ParseCodeString(codeFileContent);
+                // const html = Prism.highlight(codeFileContent, Prism.languages.jsx, 'jsx');
                 matches.forEach((match)=>{
-                    pageContent = pageContent.replace(match,`\n<!-- CODE_${file} -->\n<pre><code>\n${html}\n</pre></code>\n<!-- CODE_${file} -->\n`);
+                    pageContent = pageContent.replace(match,`\n<!-- CODE_${file} -->\n<pre class="language-custom xyntax"><code class="language-custom">\n${html}\n</code></pre>\n<!-- CODE_${file} -->\n`);
                 })
                 
             }

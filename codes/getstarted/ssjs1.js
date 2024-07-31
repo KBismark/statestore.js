@@ -5,12 +5,14 @@ configureForReact(React); // Configuration for using with react or react-natve
 export default function SimpleCircuit(){
     createStore('storageName', 'storeId', {status: false, count: 0})
     return (
+        //<x-jsx>
         <div>
             <Room id={1} />
             <Room id={2} />
             <SwitchButton />
             <FirstRoomOnStatus />
         </div>
+        //</x-jsx>
     )
 }
 

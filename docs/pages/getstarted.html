@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statestore.js - Getting started to building fine-grained, reactive applictions.</title>
     <link rel="stylesheet" href="../styles/home.css" />
-    <ink rel="stylesheet" href="../styles/prism.css" />
+    <!-- <link rel="stylesheet" href="../styles/prism.css" /> -->
+    <link rel="stylesheet" href="../styles/xyntax.css" />
     <link rel="icon" type="image/x-icon" href="../images/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,11 +52,13 @@
             font-weight: 500;
         }
         pre{
-            padding: 10px;
+            padding: 10px 15px;
+            
+            font-size: 16px;
             border-radius: 10px;
             background-color: #eee;
-            font-size: 105%;
-            overflow-x: auto;
+            overflow: auto;
+            max-height: 600px;
         }
         h1{
             font-size: 400%;
@@ -232,40 +235,54 @@
                     be raised higher in the component tree to some great grand parent component and re-render downwards to the last child component every time 
                     state changes.
 
+
+
+
+
+
+
+
+
 <!-- CODE_react1.js -->
-<pre><code>
-<span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
+<pre class="language-custom xyntax"><code class="language-custom">
+<div class="xmk-js1x"> <span class="xmk-key2x">import</span> <span class="xmk-varx">React</span>, &#123; <span class="xmk-varx">useState</span> &#125; <span class="xmk-key2x">from</span> <span class="xmk-stringx">'react'</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">SimpleCircuit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token punctuation">[</span>status<span class="token punctuation">,</span> setStatus<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> <span class="token punctuation">[</span>room1_OnCount<span class="token punctuation">,</span> setRoom1_OnCount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> <span class="token function-variable function">toggleSwitch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">{</span>
-        <span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token operator">!</span>status<span class="token punctuation">)</span>
-        <span class="token function">setRoom1_OnCount</span><span class="token punctuation">(</span>status<span class="token operator">?</span>count<span class="token operator">:</span>count<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>
-        <span class="token operator">&lt;</span>div<span class="token operator">></span>
-            <span class="token operator">&lt;</span>Room id<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span> status<span class="token operator">=</span><span class="token punctuation">{</span>status<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-            <span class="token operator">&lt;</span>Room id<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span> status<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">!</span>status<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-            <span class="token operator">&lt;</span>SwitchButton toggleSwitch<span class="token operator">=</span><span class="token punctuation">{</span>toggleSwitch<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-            <span class="token operator">&lt;</span>FirstRoomOnStatus count<span class="token operator">=</span><span class="token punctuation">{</span>room1_OnCount<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-    <span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<span class="xmk-key2x">export</span> <span class="xmk-key2x">default</span> <span class="xmk-key1x">function</span> <span class="xmk-methx">SimpleCircuit</span>()&#123;
+  <span class="xmk-key1x">const</span> [<span class="xmk-varx">status</span>, <span class="xmk-varx">setStatus</span>] = <span class="xmk-methx">useState</span>(<span class="xmk-key1x">false</span>);
+  <span class="xmk-key1x">const</span> [<span class="xmk-varx">room1_OnCount</span>, <span class="xmk-varx">setRoom1_OnCount</span>] = <span class="xmk-methx">useState</span>(0);
+  <span class="xmk-key1x">const</span> <span class="xmk-varx">toggleSwitch</span> = ()=&#62;&#123;
+      <span class="xmk-methx">setStatus</span>(!<span class="xmk-varx">status</span>)
+      <span class="xmk-methx">setRoom1_OnCount</span>(<span class="xmk-varx">status</span>?<span class="xmk-varx">count</span>:<span class="xmk-varx">count</span>+1)
+  &#125;
+  <span class="xmk-key2x">return</span> (<div class="xmk-jsx">      &#60;<span class="xmk-key1x">div</span>&#62;
+          &#60;<span class="xmk-predefx">Room</span> <span class="xmk-varx">id</span>=&#123;1&#125; <span class="xmk-varx">status</span>=&#123;<span class="xmk-varx">status</span>&#125; &#47;&#62;
+          &#60;<span class="xmk-predefx">Room</span> <span class="xmk-varx">id</span>=&#123;2&#125; <span class="xmk-varx">status</span>=&#123;!<span class="xmk-varx">status</span>&#125; &#47;&#62;
+          &#60;<span class="xmk-predefx">SwitchButton</span> <span class="xmk-varx">toggleSwitch</span>=&#123;<span class="xmk-varx">toggleSwitch</span>&#125; &#47;&#62;
+          &#60;<span class="xmk-predefx">FirstRoomOnStatus</span> <span class="xmk-varx">count</span>=&#123;<span class="xmk-varx">room1_OnCount</span>&#125; &#47;&#62;
+      &#60;&#47;<span class="xmk-key1x">div</span>&#62;</div>  )
+&#125;
 
-<span class="token keyword">function</span> <span class="token function">SwitchButton</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>toggleSwitch<span class="token punctuation">}</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>toggleSwitch<span class="token punctuation">}</span> <span class="token operator">></span> Switch <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
-<span class="token punctuation">}</span>
+<span class="xmk-key1x">function</span> <span class="xmk-methx">SwitchButton</span>(&#123;<span class="xmk-varx">toggleSwitch</span>&#125;)&#123;
+  <span class="xmk-key2x">return</span> &#60;<span class="xmk-key1x">button</span> <span class="xmk-varx">onClick</span>=&#123;<span class="xmk-varx">toggleSwitch</span>&#125; &#62; <span class="xmk-varx">Switch</span> &#60;&#47;<span class="xmk-key1x">button</span>&#62;
+&#125;
 
-<span class="token keyword">function</span> <span class="token function">Room</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>id<span class="token punctuation">,</span> status<span class="token punctuation">}</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token comment">// Turns off or on light in this room...</span>
-<span class="token punctuation">}</span>
+<span class="xmk-key1x">function</span> <span class="xmk-methx">Room</span>(&#123;<span class="xmk-varx">id</span>, <span class="xmk-varx">status</span>&#125;)&#123;
+  <span class="xmk-commentx">&#47;&#47; Turns off or on light in this room...
+</span>&#125;
 
-<span class="token keyword">function</span> <span class="token function">FirstRoomOnStatus</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>count<span class="token punctuation">}</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token comment">// Displays how many times the first room is turned on...</span>
-<span class="token punctuation">}</span>
-</pre></code>
+<span class="xmk-key1x">function</span> <span class="xmk-methx">FirstRoomOnStatus</span>(&#123;<span class="xmk-varx">count</span>&#125;)&#123;
+  <span class="xmk-commentx">&#47;&#47; Displays how many times the first room is turned on...
+</span>&#125; </div>
+</code></pre>
 <!-- CODE_react1.js -->
+
+
+
+
+
+
+
+
 
 <br /> <br />
                 </p>
@@ -284,49 +301,63 @@
                     <br /><br />
                     Statestore shines even without the use of optimizations provided in the React library like the memoization, useMemo or the likes.
 
+
+
+
+
+
+
+
+
 <!-- CODE_ssjs1.js -->
-<pre><code>
-<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> configureForReact<span class="token punctuation">,</span> useStateStore<span class="token punctuation">,</span> createStore<span class="token punctuation">,</span> updateStore<span class="token punctuation">,</span> getStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'statestorejs'</span>
-<span class="token function">configureForReact</span><span class="token punctuation">(</span>React<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Configuration for using with react or react-natve</span>
+<pre class="language-custom xyntax"><code class="language-custom">
+<div class="xmk-js1x"> <span class="xmk-key2x">import</span> <span class="xmk-varx">React</span> <span class="xmk-key2x">from</span> <span class="xmk-stringx">'react'</span>
+<span class="xmk-key2x">import</span> &#123; <span class="xmk-varx">configureForReact</span>, <span class="xmk-varx">useStateStore</span>, <span class="xmk-varx">createStore</span>, <span class="xmk-varx">updateStore</span>, <span class="xmk-varx">getStore</span> &#125; <span class="xmk-key2x">from</span> <span class="xmk-stringx">'statestorejs'</span>
+<span class="xmk-methx">configureForReact</span>(<span class="xmk-varx">React</span>); <span class="xmk-commentx">&#47;&#47; Configuration for using with react or react-natve
+</span>
+<span class="xmk-key2x">export</span> <span class="xmk-key2x">default</span> <span class="xmk-key1x">function</span> <span class="xmk-methx">SimpleCircuit</span>()&#123;
+  <span class="xmk-methx">createStore</span>(<span class="xmk-stringx">'storageName'</span>, <span class="xmk-stringx">'storeId'</span>, &#123;<span class="xmk-varx">status</span>: <span class="xmk-key1x">false</span>, <span class="xmk-varx">count</span>: 0&#125;)
+  <span class="xmk-key2x">return</span> (<div class="xmk-jsx">      &#60;<span class="xmk-key1x">div</span>&#62;
+          &#60;<span class="xmk-predefx">Room</span> <span class="xmk-varx">id</span>=&#123;1&#125; &#47;&#62;
+          &#60;<span class="xmk-predefx">Room</span> <span class="xmk-varx">id</span>=&#123;2&#125; &#47;&#62;
+          &#60;<span class="xmk-predefx">SwitchButton</span> &#47;&#62;
+          &#60;<span class="xmk-predefx">FirstRoomOnStatus</span> &#47;&#62;
+      &#60;&#47;<span class="xmk-key1x">div</span>&#62;</div>  )
+&#125;
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">SimpleCircuit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token function">createStore</span><span class="token punctuation">(</span><span class="token string">'storageName'</span><span class="token punctuation">,</span> <span class="token string">'storeId'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">status</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>
-        <span class="token operator">&lt;</span>div<span class="token operator">></span>
-            <span class="token operator">&lt;</span>Room id<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-            <span class="token operator">&lt;</span>Room id<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-            <span class="token operator">&lt;</span>SwitchButton <span class="token operator">/</span><span class="token operator">></span>
-            <span class="token operator">&lt;</span>FirstRoomOnStatus <span class="token operator">/</span><span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-    <span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<span class="xmk-key1x">function</span> <span class="xmk-methx">SwitchButton</span>()&#123;
+  <span class="xmk-key1x">const</span> <span class="xmk-varx">toggleSwitch</span> = ()=&#62;&#123;
+      <span class="xmk-key1x">const</span> &#123; <span class="xmk-varx">status</span>, <span class="xmk-varx">count</span> &#125; = <span class="xmk-methx">getStore</span>(<span class="xmk-stringx">'storageName'</span>, <span class="xmk-stringx">'storeId'</span>)
+      <span class="xmk-key1x">const</span> <span class="xmk-varx">reactors</span> = !<span class="xmk-varx">status</span>?[<span class="xmk-stringx">'status'</span>,<span class="xmk-stringx">'count'</span>]: [<span class="xmk-stringx">'status'</span>];
+      <span class="xmk-methx">updateStore</span>(
+          <span class="xmk-stringx">'storageName'</span>, <span class="xmk-stringx">'storeId'</span>, 
+          &#123; <span class="xmk-varx">actors</span>: <span class="xmk-varx">reactors</span>, <span class="xmk-varx">store</span>:&#123; <span class="xmk-varx">status</span>, <span class="xmk-varx">count</span>:!<span class="xmk-varx">status</span>?<span class="xmk-varx">count</span>+1:<span class="xmk-varx">count</span> &#125; &#125;
+      )
+  &#125;
+  <span class="xmk-key2x">return</span> &#60;<span class="xmk-key1x">button</span> <span class="xmk-varx">onClick</span>=&#123;<span class="xmk-varx">toggleSwitch</span>&#125; &#62; <span class="xmk-varx">Switch</span> &#60;&#47;<span class="xmk-key1x">button</span>&#62;
+&#125;
 
-<span class="token keyword">function</span> <span class="token function">SwitchButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token function-variable function">toggleSwitch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">{</span>
-        <span class="token keyword">const</span> <span class="token punctuation">{</span> status<span class="token punctuation">,</span> count <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">getStore</span><span class="token punctuation">(</span><span class="token string">'storageName'</span><span class="token punctuation">,</span> <span class="token string">'storeId'</span><span class="token punctuation">)</span>
-        <span class="token keyword">const</span> reactors <span class="token operator">=</span> <span class="token operator">!</span>status<span class="token operator">?</span><span class="token punctuation">[</span><span class="token string">'status'</span><span class="token punctuation">,</span><span class="token string">'count'</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'status'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token function">updateStore</span><span class="token punctuation">(</span>
-            <span class="token string">'storageName'</span><span class="token punctuation">,</span> <span class="token string">'storeId'</span><span class="token punctuation">,</span> 
-            <span class="token punctuation">{</span> <span class="token literal-property property">actors</span><span class="token operator">:</span> reactors<span class="token punctuation">,</span> <span class="token literal-property property">store</span><span class="token operator">:</span><span class="token punctuation">{</span> status<span class="token punctuation">,</span> <span class="token literal-property property">count</span><span class="token operator">:</span><span class="token operator">!</span>status<span class="token operator">?</span>count<span class="token operator">+</span><span class="token number">1</span><span class="token operator">:</span>count <span class="token punctuation">}</span> <span class="token punctuation">}</span>
-        <span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>toggleSwitch<span class="token punctuation">}</span> <span class="token operator">></span> Switch <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
-<span class="token punctuation">}</span>
+<span class="xmk-key1x">function</span> <span class="xmk-methx">Room</span>(&#123;<span class="xmk-varx">id</span>&#125;)&#123;
+  <span class="xmk-commentx">&#47;&#47; Get current status and react to only changes in the <span class="xmk-stringx">'status'</span>
+</span>  <span class="xmk-key1x">const</span> &#123; <span class="xmk-varx">status</span>, <span class="xmk-varx">count</span> &#125; = <span class="xmk-methx">useStateStore</span>(<span class="xmk-stringx">'storageName'</span>, <span class="xmk-stringx">'storeId'</span>, [<span class="xmk-stringx">'status'</span>])
+  <span class="xmk-commentx">&#47;&#47; Turns off or on light in this room...
+</span>&#125;
 
-<span class="token keyword">function</span> <span class="token function">Room</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>id<span class="token punctuation">}</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token comment">// Get current status and react to only changes in the 'status'</span>
-    <span class="token keyword">const</span> <span class="token punctuation">{</span> status<span class="token punctuation">,</span> count <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useStateStore</span><span class="token punctuation">(</span><span class="token string">'storageName'</span><span class="token punctuation">,</span> <span class="token string">'storeId'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'status'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token comment">// Turns off or on light in this room...</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">function</span> <span class="token function">FirstRoomOnStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token comment">// Get number of times Room1 has been on and re-render only if it increases</span>
-    <span class="token keyword">const</span> <span class="token punctuation">{</span> conut <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useStateStore</span><span class="token punctuation">(</span><span class="token string">'storageName'</span><span class="token punctuation">,</span> <span class="token string">'storeId'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'count'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token comment">// Displays how many times the first room is turned on...</span>
-<span class="token punctuation">}</span>
-</pre></code>
+<span class="xmk-key1x">function</span> <span class="xmk-methx">FirstRoomOnStatus</span>()&#123;
+  <span class="xmk-commentx">&#47;&#47; Get number of times Room1 has been on and re-render only if it increases
+</span>  <span class="xmk-key1x">const</span> &#123; <span class="xmk-varx">conut</span> &#125; = <span class="xmk-methx">useStateStore</span>(<span class="xmk-stringx">'storageName'</span>, <span class="xmk-stringx">'storeId'</span>, [<span class="xmk-stringx">'count'</span>])
+  <span class="xmk-commentx">&#47;&#47; Displays how many times the first room is turned on...
+</span>&#125; </div>
+</code></pre>
 <!-- CODE_ssjs1.js -->
+
+
+
+
+
+
+
+
 
                 </p>
 

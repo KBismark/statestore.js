@@ -8,12 +8,14 @@ export default function SimpleCircuit(){
         setRoom1_OnCount(status?count:count+1)
     }
     return (
+        //<x-jsx>
         <div>
             <Room id={1} status={status} />
             <Room id={2} status={!status} />
             <SwitchButton toggleSwitch={toggleSwitch} />
             <FirstRoomOnStatus count={room1_OnCount} />
         </div>
+        //</x-jsx>
     )
 }
 
