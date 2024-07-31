@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statestore.js - Getting started to building fine-grained, reactive applictions.</title>
     <link rel="stylesheet" href="../styles/home.css" />
+    <ink rel="stylesheet" href="../styles/prism.css" />
     <link rel="icon" type="image/x-icon" href="../images/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -230,38 +231,42 @@
                     when some state needs to be passed or shared accross components with different immediate parent components. In that case, state needs to 
                     be raised higher in the component tree to some great grand parent component and re-render downwards to the last child component every time 
                     state changes.
+
+<!-- CODE_react1.js -->
 <pre><code>
-   import React, { useState } from 'react'
+<span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
 
-    export default function SimpleCircuit(){
-        const [status, setStatus] = useState(false);
-        const [room1_OnCount, setRoom1_OnCount] = useState(0);
-        const toggleSwitch = ()=&gt;{
-            setStatus(!status)
-            setRoom1_OnCount(status?count:count+1)
-        }
-        return (
-            &lt;div&gt;
-                &lt;Room id={1} status={status} /&gt;
-                &lt;Room id={2} status={!status} /&gt;
-                &lt;SwitchButton toggleSwitch={toggleSwitch} /&gt;
-                &lt;FirstRoomOnStatus count={room1_OnCount} /&gt;
-            &lt;/div&gt;
-        )
-    }
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">SimpleCircuit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>status<span class="token punctuation">,</span> setStatus<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>room1_OnCount<span class="token punctuation">,</span> setRoom1_OnCount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">toggleSwitch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">{</span>
+        <span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token operator">!</span>status<span class="token punctuation">)</span>
+        <span class="token function">setRoom1_OnCount</span><span class="token punctuation">(</span>status<span class="token operator">?</span>count<span class="token operator">:</span>count<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>div<span class="token operator">></span>
+            <span class="token operator">&lt;</span>Room id<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span> status<span class="token operator">=</span><span class="token punctuation">{</span>status<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span>Room id<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span> status<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">!</span>status<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span>SwitchButton toggleSwitch<span class="token operator">=</span><span class="token punctuation">{</span>toggleSwitch<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span>FirstRoomOnStatus count<span class="token operator">=</span><span class="token punctuation">{</span>room1_OnCount<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 
-    function SwitchButton({toggleSwitch}){
-        return &lt;button onClick={toggleSwitch} &gt; Switch &lt;/button&gt;
-    }
+<span class="token keyword">function</span> <span class="token function">SwitchButton</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>toggleSwitch<span class="token punctuation">}</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>toggleSwitch<span class="token punctuation">}</span> <span class="token operator">></span> Switch <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+<span class="token punctuation">}</span>
 
-    function Room({id, status}){
-        // Turns off or on light in this room...
-    }
+<span class="token keyword">function</span> <span class="token function">Room</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>id<span class="token punctuation">,</span> status<span class="token punctuation">}</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// Turns off or on light in this room...</span>
+<span class="token punctuation">}</span>
 
-    function FirstRoomOnStatus({count}){
-        // Displays how many times the first room is turned on...
-    }
-</code></pre>
+<span class="token keyword">function</span> <span class="token function">FirstRoomOnStatus</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>count<span class="token punctuation">}</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// Displays how many times the first room is turned on...</span>
+<span class="token punctuation">}</span>
+</pre></code>
+<!-- CODE_react1.js -->
+
 <br /> <br />
                 </p>
                 <p>
@@ -279,47 +284,50 @@
                     <br /><br />
                     Statestore shines even without the use of optimizations provided in the React library like the memoization, useMemo or the likes.
 
+<!-- CODE_ssjs1.js -->
 <pre><code>
-    import React, { useState } from 'react'
-    import { configureForReact, useStateStore, createStore, updateStore, getStore } from 'statestorejs'
-    configureForReact(React); // Configuration for using with react or react-natve
- 
-     export default function SimpleCircuit(){
-        createStore('storageName', 'storeId', {status: false, count: 0})
-         return (
-             &lt;div&gt;
-                 &lt;Room id={1} /&gt;
-                 &lt;Room id={2} /&gt;
-                 &lt;SwitchButton /&gt;
-                 &lt;FirstRoomOnStatus /&gt;
-             &lt;/div&gt;
-         )
-     }
- 
-     function SwitchButton(){
-        const toggleSwitch = ()=&gt;{
-            const { status, count } = getStore('storageName', 'storeId')
-            const reactors = !status?['status','count']: ['status'];
-            updateStore(
-                'storageName', 'storeId', 
-                { actors: reactors, store:{ status, count:!status?count+1:count } }
-            )
-        }
-         return &lt;button onClick={toggleSwitch} &gt; Switch &lt;/button&gt;
-     }
- 
-     function Room({id}){
-        // Get current status and react to only changes in the 'status'
-        const { status, count } = useStateStore('storageName', 'storeId', ['status'])
-         // Turns off or on light in this room...
-     }
- 
-     function FirstRoomOnStatus(){
-        // Get number of times Room1 has been on and re-render only if it increases
-        const { conut } = useStateStore('storageName', 'storeId', ['count'])
-         // Displays how many times the first room is turned on...
-     }
- </code></pre>
+<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> configureForReact<span class="token punctuation">,</span> useStateStore<span class="token punctuation">,</span> createStore<span class="token punctuation">,</span> updateStore<span class="token punctuation">,</span> getStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'statestorejs'</span>
+<span class="token function">configureForReact</span><span class="token punctuation">(</span>React<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Configuration for using with react or react-natve</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">SimpleCircuit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">createStore</span><span class="token punctuation">(</span><span class="token string">'storageName'</span><span class="token punctuation">,</span> <span class="token string">'storeId'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">status</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>div<span class="token operator">></span>
+            <span class="token operator">&lt;</span>Room id<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span>Room id<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span>SwitchButton <span class="token operator">/</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span>FirstRoomOnStatus <span class="token operator">/</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">SwitchButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">toggleSwitch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">{</span>
+        <span class="token keyword">const</span> <span class="token punctuation">{</span> status<span class="token punctuation">,</span> count <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">getStore</span><span class="token punctuation">(</span><span class="token string">'storageName'</span><span class="token punctuation">,</span> <span class="token string">'storeId'</span><span class="token punctuation">)</span>
+        <span class="token keyword">const</span> reactors <span class="token operator">=</span> <span class="token operator">!</span>status<span class="token operator">?</span><span class="token punctuation">[</span><span class="token string">'status'</span><span class="token punctuation">,</span><span class="token string">'count'</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'status'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token function">updateStore</span><span class="token punctuation">(</span>
+            <span class="token string">'storageName'</span><span class="token punctuation">,</span> <span class="token string">'storeId'</span><span class="token punctuation">,</span> 
+            <span class="token punctuation">{</span> <span class="token literal-property property">actors</span><span class="token operator">:</span> reactors<span class="token punctuation">,</span> <span class="token literal-property property">store</span><span class="token operator">:</span><span class="token punctuation">{</span> status<span class="token punctuation">,</span> <span class="token literal-property property">count</span><span class="token operator">:</span><span class="token operator">!</span>status<span class="token operator">?</span>count<span class="token operator">+</span><span class="token number">1</span><span class="token operator">:</span>count <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>toggleSwitch<span class="token punctuation">}</span> <span class="token operator">></span> Switch <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">Room</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>id<span class="token punctuation">}</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// Get current status and react to only changes in the 'status'</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> status<span class="token punctuation">,</span> count <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useStateStore</span><span class="token punctuation">(</span><span class="token string">'storageName'</span><span class="token punctuation">,</span> <span class="token string">'storeId'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'status'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token comment">// Turns off or on light in this room...</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">FirstRoomOnStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// Get number of times Room1 has been on and re-render only if it increases</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> conut <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useStateStore</span><span class="token punctuation">(</span><span class="token string">'storageName'</span><span class="token punctuation">,</span> <span class="token string">'storeId'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'count'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token comment">// Displays how many times the first room is turned on...</span>
+<span class="token punctuation">}</span>
+</pre></code>
+<!-- CODE_ssjs1.js -->
+
                 </p>
 
                 <div style="position: absolute;top: 0;right: 0;background-color: rgba(136, 221, 160, 0.11); width: 90px;height: 90px;margin: -20px -10px 0px 0px;transform: rotate(70deg);border-radius: 50px 50px 0px 50px;"></div>
