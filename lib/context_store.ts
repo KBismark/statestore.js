@@ -1,4 +1,4 @@
-import { createProvider, deleteStore, getStore, setStore, subscribe, unsubscribe, update } from "./global_store";
+import { createProvider, _deleteStore, _getStore, setStore, _subscribe, _unsubscribe, update } from "./global_store";
 
 // Context providers are not accessible to outsiders
 const provider = `private-${Math.random()}`;
@@ -13,9 +13,9 @@ function getConetextId(){
 }
 
 type Objects = {[k:string]: any}
-export interface ContextId extends String{}
+export interface _ContextId extends String{}
 export interface ContextValue<V>{value: V}
-type Context<O> = [ContextId, ContextValue<O>]
+type Context<O> = [_ContextId, ContextValue<O>]
 
 /**
  * Sets a store in a storage provider. A context is a store that is to be accessible to only the function that creates it and any other function 
@@ -37,7 +37,7 @@ type Context<O> = [ContextId, ContextValue<O>]
  * }
  * 
  */
-export function createContext<C=any>(context: C extends Objects?C:never): Context<C> {
+export function _createContext<C=any>(context: C extends Objects?C:never): Context<C> {
     const id = getConetextId();
     setStore(provider, id, context)
     return [id,{value: context}]
@@ -49,10 +49,10 @@ export function createContext<C=any>(context: C extends Objects?C:never): Contex
  * @param contextId Context identifier.
  * 
  */
-export function destroyContext <S=any>(contextId: ContextId, context: ContextValue<S>){
+export function _destroyContext <S=any>(contextId: _ContextId, context: ContextValue<S>){
     (context as any).value = {};
     !unusedIds.includes(contextId as string)&&unusedIds.push(contextId as string);
-    deleteStore(provider, contextId as string);
+    _deleteStore(provider, contextId as string);
 }
 
 /**
@@ -62,7 +62,7 @@ export function destroyContext <S=any>(contextId: ContextId, context: ContextVal
  * @param data Update configuration object  
  * 
  */
-export function subscribeToContext<S>(contextId: ContextId, data: {
+export function _subscribeToContext<S>(contextId: _ContextId, data: {
     /**
      * An array of properties or fields in the store to attach a listener. 
      * If undefined, this listner shall be triggerered everytime the context is updated.  
@@ -71,7 +71,7 @@ export function subscribeToContext<S>(contextId: ContextId, data: {
     /** A listenr to be triggered when context is updated */
     action: (store: S)=>void;
 }){
-    return subscribe(provider, contextId as string, data)
+    return _subscribe(provider, contextId as string, data)
 }
 
 /**
@@ -80,7 +80,7 @@ export function subscribeToContext<S>(contextId: ContextId, data: {
  * @param subscriptionId The subscription ID returned when `subscribeToContext` was called. 
  * 
  */
-export const unsubscribeToContext = (contextId: ContextId, subscriptionId: string)=> unsubscribe(provider, contextId as any, subscriptionId);
+export const _unsubscribeToContext = (contextId: _ContextId, subscriptionId: string)=> _unsubscribe(provider, contextId as any, subscriptionId);
 
 /**
  * This function returns a copy of the context if no callback is provided.    
@@ -90,8 +90,8 @@ export const unsubscribeToContext = (contextId: ContextId, subscriptionId: strin
  * @param cb A callback that receives a copy of the context as argument if the context exists. This callback has no effect if context does not exist.     
  * 
  */
-export function getContext<S , R=S, C = (((store: S) => R)|undefined)>(contextId: ContextId, cb?: C): C extends (store: S) => infer T ? T : S | null{
-    return getStore(provider, contextId as any, cb)
+export function _getContext<S , R=S, C = (((store: S) => R)|undefined)>(contextId: _ContextId, cb?: C): C extends (store: S) => infer T ? T : S | null{
+    return _getStore(provider, contextId as any, cb)
 }
 
 type OptionalKeys<T> = {[K in keyof T]?: T[K]};
@@ -103,7 +103,7 @@ type OptionalKeys<T> = {[K in keyof T]?: T[K]};
  * @param context Provide the actual context to also update `context.value`. 
  * @param data Update configuration object.
  */
-export function updateContext<S=any>(contextId: ContextId, context: S extends Objects?ContextValue<S>:never, data: {
+export function _updateContext<S=any>(contextId: _ContextId, context: S extends Objects?ContextValue<S>:never, data: {
    /**
      * An array of properties or fields whose listeners should respond to the changes. 
      * If undefined, updates and triggers all subscribed handlers. Set to an empty array `[]` to update without triggering subscribed handlers.    

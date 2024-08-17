@@ -23,7 +23,7 @@ const noop = ()=>{};
  * @param provider A name for the storage provider
  * 
  */
-export function deleteProvider(provider: string){
+export function _deleteProvider(provider: string){
     Store.delete(provider)
 }
 
@@ -33,7 +33,7 @@ export function deleteProvider(provider: string){
  * @param storeId Store identifier.
  * 
  */
-export function deleteStore(provider: string, storeId: string){
+export function _deleteStore(provider: string, storeId: string){
     let branch = getPorvider(provider);
     if(branch){
         branch[storeId] = undefined;
@@ -45,7 +45,7 @@ export function deleteStore(provider: string, storeId: string){
  * @param storeId Store identifier. A unique string that is used to access a store from a storage provider.
  * @param store The data to be stored
  */
-export function createStore<S=any>(provider: string, storeId: string, store: S extends Objects? S : never){
+export function _createStore<S=any>(provider: string, storeId: string, store: S extends Objects? S : never){
     let branch = getPorvider(provider);
     if(!branch){
         Store.set(provider, branch = {})
@@ -55,7 +55,7 @@ export function createStore<S=any>(provider: string, storeId: string, store: S e
     }
 }
 
-export const setStore = createStore;
+export const setStore = _createStore;
 
 type Objects = {[k:string]: any}
 type OptionalKeys<T> = {
@@ -72,7 +72,7 @@ type OptionalKeys<T> = {
  * @param cb A callback that receives a copy of the store as argument if the store exists. This callback has no effect if store does not exist.     
  * 
  */
-export function getStore<S , R=S, C = (((store: S) => R)|undefined)>(provider: string, storeId: string,cb?: C): C extends (store: S) => infer T ? T : S | null{
+export function _getStore<S , R=S, C = (((store: S) => R)|undefined)>(provider: string, storeId: string,cb?: C): C extends (store: S) => infer T ? T : S | null{
     let branch = getPorvider(provider);
     if(!branch){
         return null as any
@@ -94,7 +94,7 @@ export function getStore<S , R=S, C = (((store: S) => R)|undefined)>(provider: s
  * @param data Update configuration object.    
  * 
  */
-export function updateStore<S>(provider: string, storeId: string, data: {
+export function _updateStore<S>(provider: string, storeId: string, data: {
     /**
      * An array of properties or fields in the store whose listeners should respond to the changes. 
      * If undefined, updates and triggers all subscribed handlers. Set to an empty array `[]` to update without triggering subscribed handlers.    
@@ -176,7 +176,7 @@ export function update<S>(provider: string, storeId: string, data: {
  * @param data Update configuration object  
  * 
  */
-export function subscribe<S>(provider: string, storeId: string, data: {
+export function _subscribe<S>(provider: string, storeId: string, data: {
     /**
      * An array of properties or fields in the store to attach a listener. 
      * If undefined, this listner shall be triggerered everytime the store's data is updated.  
@@ -209,7 +209,7 @@ export function subscribe<S>(provider: string, storeId: string, data: {
  * @param subscriptionId The subscription ID returned when `subscribe` was called. 
  * 
  */
-export function unsubscribe(provider: string, storeId: string, subscriptionId: string ){
+export function _unsubscribe(provider: string, storeId: string, subscriptionId: string ){
     let branch = getPorvider(provider);
     if(!branch){
         return 
