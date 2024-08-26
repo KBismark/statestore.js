@@ -4,6 +4,7 @@ import * as ContextsStore from "./context_store";
 import * as ReactStore from "./react_env"
 // Exporting at once `export const {/*...*/} = StateStore` is causing errors in final typescript output
 // Export each separately
+export const getStorageProvider = StateStore.getPorvider;
 export const getStore = StateStore._getStore;
 export const subscribe = StateStore._subscribe;
 export const unsubscribe = StateStore._unsubscribe;
