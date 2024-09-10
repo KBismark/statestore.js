@@ -7,7 +7,7 @@ yarn add statestorejs
 ```
 **or with npm**    
 ```bash
-npm install 
+npm install statestorejs
 ```    
 
 [Go to usage in reactjs and react native apps](#usage-in-reactjs-and-react-native)    
