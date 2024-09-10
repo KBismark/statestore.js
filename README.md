@@ -66,11 +66,13 @@ App(); // Start app
 ## APIs and Methods
 
 ### createStore(provider, storeId, storedata)    
- Sets a store in a storage provider. If no storage provider with the name &lt;`provider name given`&gt; exists, 
- a new storage provider with &lt;`provider name given`&gt; is created before the store is created.    
+ Sets a store in a storage provider. If no storage provider with the name `provider name given` exists, 
+ a new storage provider with `provider name given` is created before the store is created.    
 
- **@param** `provider` Storage provider's name
- **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.
+ **@param** `provider` Storage provider's name    
+
+ **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.    
+
  **@param** `storedata` The data to be stored        
 
 
@@ -78,37 +80,46 @@ App(); // Start app
  Gets a copy of a store's data from a storage provider. This function returns a copy of the store if no callback is provided. 
 If a callback is provided, then it returns the value returned by the callback. If no such store exists in the storage provider, null is returned.    
 
- **@param** `provider` Storage provider's name
- **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.
+ **@param** `provider` Storage provider's name    
+
+ **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.    
+
  **@param** `cb` Optional callback that receives a copy of the store as argument if the store exists. This callback has no effect if store does not exist.         
 
 
 ### updateStore(provider, storeId, options)    
  Updates and trigger listners of a store data.    
 
- **@param** `provider` Storage provider's name
- **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.
+ **@param** `provider` Storage provider's name    
+
+ **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.    
+
  **@param** `options` Update configuration object.         
 
 ### subscribe(provider, storeId, options)    
 Subscribe to changes in a store's data or specific fields in the store. This method returns a sunscription id 
 that can be used to unsubscribe to the service. **Make sure to unsubscribe when not needed.**    
 
- **@param** `provider` Storage provider's name
- **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.
+ **@param** `provider` Storage provider's name    
+
+ **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.    
+
  **@param** `options` Subscription configuration object. 
 
  ### unsubscribe(provider, storeId, subscriptionId)    
  Unsubscribe to changes in a store's data.    
 
- **@param** `provider` Storage provider's name
- **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.
+ **@param** `provider` Storage provider's name    
+
+ **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.    
+
  **@param** `subscriptionId` The subscriptionId of the subscription to cancel.
 
 ### deleteStore(provider, storeId)    
  Removes a store from a storage provider   
 
- **@param** `provider` Storage provider's name
+ **@param** `provider` Storage provider's name    
+
  **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.        
 
 
@@ -136,8 +147,10 @@ Configures and setup statestorejs for use in react or react native.
 A react hook that takes care of subscription and unsubscriptions automatically. 
 The hook allows components to subscribe to stores when mounted and unsubscibe when unmounted.    
 
- **@param** `provider` Storage provider's name
- **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.
+ **@param** `provider` Storage provider's name    
+
+ **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.    
+ 
  **@param** `watch` Optinal array of fields to watch for changes in a store's object. When empty, `[]`, the method 
  only returns the store's data without any subscription. When not provided or undefined, causes component to update on changes in 
  the value of any of the fields in the store's object.        
