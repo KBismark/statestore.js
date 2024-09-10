@@ -9,7 +9,7 @@ example of how statestorejs ensures selectivity in triggering change events.
 In the figure below, both componnent `A` and `B` subscribes to be updated when there are changes in the values of the object. 
 Component `B` does not depend on `value B` or changes in `value B` has no effect on component `B` therefore, never updates (or re-executed) 
 until there's a change in `value A`. That is how statestorejs ensure selectivity in updates (and/or re-renders in Reactjs) applications.    
-![Basic idea behind statestorejs](./files/figure1.png)
+![Basic idea behind statestorejs](./files/figure2.png)
 
 ## A simple demo in any JavaScript or TypeScript applications
 This is a test with the usage of statestore.js to pass data from one function to the other.    
