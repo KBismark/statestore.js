@@ -88,6 +88,15 @@ App(); // Start app
 
  **@param** `storedata` The data to be stored        
 
+ ```ts 
+    import { createStore } from 'statestorejs'
+
+    type User = {username: string; age: number};
+
+    createStore<User>('some_provider', 'some_store', {username: 'John', age: 34})    
+
+```
+
 
 ### getStore(provider, storeId, cb)    
  Gets a copy of a store's data from a storage provider. This function returns a copy of the store if no callback is provided. 
@@ -99,6 +108,16 @@ If a callback is provided, then it returns the value returned by the callback. I
 
  **@param** `cb` Optional callback that receives a copy of the store as argument if the store exists. This callback has no effect if store does not exist.         
 
+ ```ts 
+    import { getStore } from 'statestorejs'
+
+    type User = {username: string; age: number};
+
+    const { age, username, fullname } = getStore<User>('some_provider', 'some_store', (store)=>{
+        return {...store, fullname: `${store.username}${store.age}`}
+    })    
+
+```
 
 ### updateStore(provider, storeId, options)    
  Updates and trigger listners of a store data.    
@@ -107,7 +126,19 @@ If a callback is provided, then it returns the value returned by the callback. I
 
  **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.    
 
- **@param** `options` Update configuration object.         
+ **@param** `options` Update configuration object.      
+
+  ```ts 
+    import { updateStore } from 'statestorejs'
+
+    type User = {username: string; age: number};
+
+    updateStore<User>('some_provider', 'some_store', {
+        actors: ['username'], // Only listeners of 'username' should be triggerd
+        store: {useraname: 'James'}
+    })    
+
+```   
 
 ### subscribe(provider, storeId, options)    
 Subscribe to changes in a store's data or specific fields in the store. This method returns a sunscription id 
@@ -117,7 +148,21 @@ that can be used to unsubscribe to the service. **Make sure to unsubscribe when 
 
  **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.    
 
- **@param** `options` Subscription configuration object. 
+ **@param** `options` Subscription configuration object.     
+
+  ```ts 
+    import { subscribe } from 'statestorejs'
+
+    type User = {username: string; age: number};
+
+    const subscriptionId = subscribe<User>('some_provider', 'some_store', {
+        watch: ['username'],
+        action: (store)=>{
+            console.log(store.username, store.age)
+        }
+    })    
+
+```
 
  ### unsubscribe(provider, storeId, subscriptionId)    
  Unsubscribe to changes in a store's data.    
@@ -126,7 +171,14 @@ that can be used to unsubscribe to the service. **Make sure to unsubscribe when 
 
  **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.    
 
- **@param** `subscriptionId` The subscriptionId of the subscription to cancel.
+ **@param** `subscriptionId` The subscriptionId of the subscription to cancel.    
+
+   ```ts 
+    import { unsubscribe } from 'statestorejs'
+
+    unsubscribe('some_provider', 'some_store', subscriptionId)    
+
+```
 
 ### deleteStore(provider, storeId)    
  Removes a store from a storage provider   
@@ -135,11 +187,24 @@ that can be used to unsubscribe to the service. **Make sure to unsubscribe when 
 
  **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.        
 
+```ts 
+    import { deleteStore } from 'statestorejs'
+
+    deleteStore('some_provider', 'some_store')    
+
+```
 
 ### deleteProvider(provider)    
 Clears and removes a storage provider if exists.   
 
  **@param** `provider` Storage provider's name    
+
+ ```ts 
+    import { deleteProvider } from 'statestorejs'
+
+    deleteProvider('some_provider')    
+
+```
 
 
 ## Usage in Reactjs and React Native
