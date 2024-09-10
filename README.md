@@ -17,18 +17,18 @@ This is a test with the usage of statestore.js to pass data from one function to
 
 ```ts
 
-import { type ContextId, createStore, getStore, subscribe, updateStore } from "statestorejs";
+import { createStore, getStore, subscribe, updateStore } from "statestorejs";
 
 type UserInfo = { username: string, fulname: string}
 function App(){
     const provider = 'storage_provider_name'
     const storename = 'store_name'
-    createStore<UserInfo>(provider, storename { username: 'KBismark', fullname: 'Bismark Yamoah'});
+    createStore<UserInfo>(provider, storename, { username: 'KBismark', fullname: 'Bismark Yamoah'});
 
     //Simulates userinfo update after 2 secods
     setTimeout(() => {
         // Change username and course all subscribers listening to changes in the 'username' field
-        updateStore<UserInfo>(contextId, context, {actors: ['username'], store: {username: 'KBis'}})
+        updateStore<UserInfo>(provider, storename, {actors: ['username'], store: {username: 'KBis'}})
     }, 2000);
 
     // Show current user info
