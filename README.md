@@ -1,5 +1,18 @@
 # statestore.js
-A state management library for reactively and selectively updating parts of applications.
+A state management library for reactively and selectively updating parts of applications.    
+
+## Installation 
+```bash
+yarn add statestorejs
+```
+**or with npm**    
+```bash
+npm install 
+```    
+
+[Go to usage in reactjs and react native apps](#usage-in-reactjs-and-react-native)    
+
+
 
 ## The basic idea behind statestore.js    
 Given an internal state (an object), every part of the application should be able not only to access the object  
@@ -150,14 +163,14 @@ The hook allows components to subscribe to stores when mounted and unsubscibe wh
  **@param** `provider` Storage provider's name    
 
  **@param** `storeId` Store identifier. A unique string that is used to access a store from a storage provider.    
- 
- **@param** `watch` Optinal array of fields to watch for changes in a store's object. When empty, `[]`, the method 
+
+ **@param** `watch` Optional array of fields to watch for changes in a store's object. When empty, `[]`, the method 
  only returns the store's data without any subscription. When not provided or undefined, causes component to update on changes in 
  the value of any of the fields in the store's object.        
 
 ```ts 
     import React from 'react'
-    import { configureForReact, createStore } from 'statestorejs'
+    import { configureForReact, createStore, useStateStore } from 'statestorejs'
     // Configure statestorejs
     configureForReact(React);   
     
