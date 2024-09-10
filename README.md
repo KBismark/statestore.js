@@ -23,7 +23,7 @@ type UserInfo = { username: string, fulname: string}
 function App(){
     const provider = 'storage_provider_name'
     const storename = 'store_name'
-    const [contextId, context] = createStore<UserInfo>(provider, storename { username: 'KBismark', fullname: 'Bismark Yamoah'});
+    createStore<UserInfo>(provider, storename { username: 'KBismark', fullname: 'Bismark Yamoah'});
 
     //Simulates userinfo update after 2 secods
     setTimeout(() => {
