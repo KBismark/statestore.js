@@ -1,8 +1,9 @@
 {
-    "exclude": ["node_modules", "dist", "demo", "pages", "**/*.html", "jest.config.js","__tests__"],
+    "exclude": ["node_modules", "dist", "demo", "pages", "**/*.html", "jest.config.js","__tests__","index.js","index.d.ts"],
   
     "compilerOptions": {
         "outDir": "dist",
+        // "outFile": "index.js",
         "allowJs": true,
         "esModuleInterop": true,
         "declaration": true,
@@ -11,14 +12,9 @@
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "skipLibCheck": true,
-        "module": "commonjs",
+        "module": "CommonJS",
         "target": "es5",
         "strict": false,
-        "paths": {
-            "@/*": [
-            "./*"
-            ]
-        }
     },
     "include": [
       "**/*.ts",
