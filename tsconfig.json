@@ -8,13 +8,14 @@
         "esModuleInterop": true,
         "declaration": true,
         "jsx": "react-native",
-        "lib": ["es6","dom"],
+        "lib": ["es6","dom", "es2022"],
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "skipLibCheck": true,
         "module": "CommonJS",
         "target": "es5",
-        "strict": false,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true
     },
     "include": [
       "**/*.ts",

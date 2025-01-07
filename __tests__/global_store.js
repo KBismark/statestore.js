@@ -1,4 +1,9 @@
-const { setStore, getStore, createProvider, getPorvider } = require("../lib/global_store");
+const {
+  setStore,
+  _getStore: getStore,
+  createProvider,
+  getProvider,
+} = require("../lib/global_store");
 const Store = new Map();
 
 
@@ -13,7 +18,7 @@ describe('setStore', () => {
         createProvider(provider)
         setStore(provider, storeId, store);
     
-        const branch = getPorvider(provider);
+        const branch = getProvider(provider);
         expect(branch).toBeDefined();
         expect(branch[storeId]).toBeDefined();
         expect(branch[storeId].value).toEqual(store);
@@ -27,7 +32,7 @@ describe('setStore', () => {
         createProvider(provider)
         setStore(provider, storeId, store);
     
-        const branch = getPorvider(provider);
+        const branch = getProvider(provider);
         expect(branch).toBeDefined();
         expect(branch[storeId]).toBeDefined();
         expect(branch[storeId].value).toEqual(store);
@@ -43,7 +48,7 @@ describe('setStore', () => {
 
         setStore(provider, storeId, store);
 
-        const branch = getPorvider(provider);
+        const branch = getProvider(provider);
         expect(branch).toBeDefined();
         expect(branch[storeId]).toBeDefined();
         expect(branch[storeId].value).toEqual(store);
@@ -60,7 +65,7 @@ describe('setStore', () => {
         setStore(provider, storeId, store1);
         setStore(provider, storeId, store2);
 
-        const branch = getPorvider(provider);
+        const branch = getProvider(provider);
         expect(branch).toBeDefined();
         expect(branch[storeId]).toBeDefined();
         expect(branch[storeId].value).toEqual(store1);
