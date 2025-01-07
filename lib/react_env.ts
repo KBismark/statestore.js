@@ -48,7 +48,7 @@ export function _useDerivedStore<S, K extends keyof S>(
     }
   }, [watching]);
 
-  return _getDerivedStore<S>(provider, storeId, fieldName);
+  return _getDerivedStore<S, K>(provider, storeId, fieldName);
 }
 
 
