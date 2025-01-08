@@ -91,7 +91,7 @@ export const _unsubscribeToContext = (contextId: _ContextId, subscriptionId: str
  * 
  */
 export function _getContext<S , R=S, C = (((store: S) => R)|undefined)>(contextId: _ContextId, cb?: C): C extends (store: S) => infer T ? T : S | null{
-    return _getStore(provider, contextId as any, cb)
+    return _getStore(provider, contextId as any, cb as any) as any
 }
 
 type OptionalKeys<T> = {[K in keyof T]?: T[K]};
