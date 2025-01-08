@@ -12,59 +12,89 @@ export const _getAllStoreNames = (provider: string): string[] => {
   return Object.keys(storage);
 };
 
-/** Returns a function that can be used to update a store with ease */
-export const _createStoreUpdater = <S, K=any>({
-  provider,
-  storeId,
-  fieldName
-}: {
+type ObjectType = Record<string | number | symbol, any>;
+
+// Configuration type
+type UpdaterConfig<S, K = never> = {
   provider: string;
   storeId: string;
   fieldName?: K;
-}) => {
-  return ({
-    actors,
-    store,
-  }: {
+};
+
+// Options type for the update function
+type UpdateOptions<S, K> = {
+  actors?: K extends keyof S ? Array<keyof S[K]> : Array<keyof S>;
+  store: K extends keyof S 
+    ? Partial<S[K] & ObjectType>
+    : Partial<S & ObjectType>;
+};
+
+/**
+ * Creates a function to update store values with type safety
+ * @template S The store type
+ * @template K The optional field key type
+ */
+export function _createStoreUpdater<S extends ObjectType, K = unknown>(
+  config: UpdaterConfig<S, K>
+) {
+  return function update(options: {
     actors?: K extends keyof S ? Array<keyof S[K]> : Array<keyof S>;
-    store: Partial<
-      K extends keyof S
-        ? S[K] extends { [k: string]: any; [k: number]: any; [k: symbol]: any }
-          ? S[K]
-          : never
-        : S extends { [k: string]: any; [k: number]: any; [k: symbol]: any }
-        ? S
-        : never
-    >;
-  }) =>
-    fieldName
-      ? updateDerivedStore<S, keyof S>(provider, storeId, fieldName as any, { actors: actors as any, store })
-      : updateStore(provider, storeId, { actors, store });
-};
+    store: K extends keyof S
+      ? Partial<S[K]>
+      : Partial<S>;
+  }) {
+    const { provider, storeId, fieldName } = config;
+    const { actors, store } = options;
 
+    if (typeof fieldName === "string") {
+      return updateDerivedStore<S, K & keyof S>(provider, storeId, fieldName, {
+        actors,
+        store,
+      });
+    }
 
-/** Returns a hook to consume data from a store with ease */
-export const _createStoreHook = <S, K= any>({
-  provider,
-  storeId,
-  fieldName,
-}: {
+    return updateStore(provider, storeId, {
+      actors,
+      store,
+    });
+  };
+}
+
+// Type for the store hook configuration
+type StoreHookConfig<S> = {
   provider: string;
   storeId: string;
-  fieldName?: K;
-}) => {
-  return function useState({
-    watch,
-  }: {
-    watch?: K extends keyof S? Array<keyof S[K]>: Array<keyof S>;
-  }) {
-    return fieldName
-      ? useDerivedStateStore<S, K extends keyof S ? K : keyof S>(
-          provider,
-          storeId,
-          fieldName as any,
-          watch as any
-        )
-      : useStateStore<S>(provider, storeId, watch as any);
-  };
+  fieldName?: keyof S;
 };
+
+// Type for the watch options
+type WatchOptions<S> = {
+  watch?: Array<keyof S>;
+};
+
+/**
+ * Creates a custom hook for consuming store data with optional field selection
+ * @template S The store type
+ */
+export function _createStoreHook<S extends Record<string, any>, K=unknown >(
+  config: StoreHookConfig<S>
+) {
+  return function useStore(
+    options?: WatchOptions<K extends keyof S ? S[K] : S>
+  ) {
+    const { provider, storeId, fieldName } = config;
+    const watch = options?.watch;
+    type ReturnType = K extends keyof S ? S[K] : S;
+
+    if (fieldName) {
+      return useDerivedStateStore<S, typeof fieldName>(
+        provider,
+        storeId,
+        fieldName,
+        watch 
+      ) as ReturnType|null;
+    }
+
+    return useStateStore<S>(provider, storeId, watch as any) as ReturnType|null;
+  };
+}

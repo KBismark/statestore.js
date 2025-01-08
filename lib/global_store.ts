@@ -73,7 +73,21 @@ type Objects = {[k:string]: any}
 type OptionalKeys<T> = {
     [K in keyof T]?: T[K];
 };
-// type StoreGetter<S> = (<F = ((store: S) => any) | null>(deriver: F) => F extends (store: S) => infer R ? R | null : S | null);
+
+type StoreCallback<S, R> = (store: S) => R;
+
+// Function overloads
+export function _getStore<S>(
+  provider: string,
+  storeId: string
+): S | null;
+
+export function _getStore<S, R>(
+  provider: string,
+  storeId: string,
+  cb: StoreCallback<S, R>
+): R | null;
+
 
 /**
  * Gets a copy of a store's data from a storage provider. This function returns a copy of the store if no callback is provided.    
@@ -84,19 +98,29 @@ type OptionalKeys<T> = {
  * @param cb A callback that receives a copy of the store as argument if the store exists. This callback has no effect if store does not exist.     
  * 
  */
-export function _getStore<S , R=S, C = (((store: S) => R)|undefined)>(provider: string, storeId: string,cb?: C): C extends (store: S) => infer T ? T : S | null{
-    let branch = getProvider(provider);
-    if(!branch){
-        return null as any
-    }
-    const store = branch[storeId];
-    if(!store){
-        return null as any;
-    }
-    if(typeof cb === 'function'){
-        return cb({...store.value})
-    }
-    return {...store.value};
+// Implementation
+export function _getStore<S, R>(
+  provider: string,
+  storeId: string,
+  cb?: StoreCallback<S, R>
+): S | R | null {
+  let branch = getProvider(provider);
+  if (!branch) {
+    return null;
+  }
+
+  const store = branch[storeId];
+  if (!store) {
+    return null;
+  }
+
+  const storeValue = { ...store.value } as S;
+
+  if (typeof cb === 'function') {
+    return cb(storeValue);
+  }
+
+  return storeValue;
 }
 
 /**
@@ -133,39 +157,61 @@ export function _createDerivedStore<S>(
   }
 }
 
+
+type GetStoreCallback<T, R> = (store: T) => R;
+
+// Function overloads
 export function _getDerivedStore<
-  S,
-  K = keyof S,
-  C =
-    | ((
-        store: S[K extends keyof S ? K : keyof S]
-      ) => S[K extends keyof S ? K : keyof S])
-    | undefined
+  S extends Record<string, any>,
+  K extends keyof S
+>(provider: string, storeId: string, fieldName: K): S[K]|null;
+
+export function _getDerivedStore<
+  S extends Record<string, any>,
+  K extends keyof S,
+  R
 >(
   provider: string,
   storeId: string,
   fieldName: K,
-  cb?: C
-): C extends (store: S[K extends keyof S ? K : keyof S]) => infer T
-  ? T
-  : S[K extends keyof S ? K : keyof S] | null {
+  cb: GetStoreCallback<S[K], R>
+): R|null;
+
+// Implementation
+export function _getDerivedStore<
+  S extends Record<string, any>,
+  K extends keyof S,
+  R
+>(
+  provider: string,
+  storeId: string,
+  fieldName: K,
+  cb?: GetStoreCallback<S[K], R>
+): S[K] | R|null {
   const providerName = `${provider}/${storeId}/${String(fieldName)}`;
   let branch = DerivedStore.get(providerName);
+
   if (!branch) {
-    return null as any;
+    return null;
   }
-  branch = getProvider(provider); // Get actual data source branch
+
+  branch = getProvider(provider);
   if (!branch) {
-    return null as any;
+    return null;
   }
+
   const store = branch[storeId];
   if (!store) {
-    return null as any;
+    return null;
   }
+
+  const fieldValue = store.value[fieldName] || {};
+
   if (typeof cb === "function") {
-    return cb({ ...(store.value[fieldName] || {}) });
+    return cb({ ...fieldValue });
   }
-  return { ...(store.value[fieldName] || {}) };
+
+  return { ...fieldValue };
 }
 
 /**

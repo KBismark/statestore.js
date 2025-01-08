@@ -1,6 +1,6 @@
 /* This is a test with the usage of statestore.js to pass data from one function to the other */
 
-import { createContext, createDerivedStore, createStore, getContext, subscribeToContext, subscribeToDerivedStore, updateContext, updateDerivedStore, updateStore } from "../lib";
+import { createContext, createDerivedStore, createStore, createStoreHook, createStoreUpdater, getContext, getDerivedStore, getStore, subscribeToContext, subscribeToDerivedStore, updateContext, updateDerivedStore, updateStore, useDerivedStateStore, useStateStore } from "../lib";
 import { _ContextId } from "../lib/context_store";
 
 type UserInfo = { username: string, fulname: string}
@@ -34,7 +34,6 @@ function App(){
     // Show current user info
     ShowUserInfo(contextId)
 }
-
 
 // Logs user info when user info is updated in the App method
 function ShowUserInfo(propsAccess:  _ContextId){
